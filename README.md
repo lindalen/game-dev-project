@@ -17,5 +17,5 @@ Rules:
 - Any changes made after the time-limit must be tagged "(After time-limit)"
 
 ## Screenshots
-** Game 1: Demon ball platformer [Time: 1 hour]
+### Game 1: Demon ball platformer [Time: 1 hour]
 ![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-1.PNG "Game 1 Image")
