@@ -18,4 +18,4 @@ Rules:
 
 ## Screenshots
 ** Game 1: Demon ball platformer [Time: 1 hour]
-![Alt text](https://github.com/lindalen/game-dev-project/raw/master/screenshots/game-1.png "Game 1 Image")
+![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-1.PNG "Game 1 Image")
