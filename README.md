@@ -14,3 +14,4 @@ Rules:
 - No code should be written before the "timer" has started
 - I can create art outside the time limits if necessary (1-hour games for example)
 - An incomplete game should be commited as it is. I might commit the necessary changes to make the program run, but not more.
+- Any changes made after the time-limit must be tagged "(After time-limit)"
