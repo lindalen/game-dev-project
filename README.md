@@ -15,3 +15,7 @@ Rules:
 - I can create art outside the time limits if necessary (1-hour games for example)
 - An incomplete game should be commited as it is. I might commit the necessary changes to make the program run, but not more.
 - Any changes made after the time-limit must be tagged "(After time-limit)"
+
+## Screenshots
+** Game 1: Demon ball platformer [Time: 1 hour]
+![Alt text](https://github.com/lindalen/game-dev-project/raw/master/screenshots/game-1.png "Game 1 Image")
