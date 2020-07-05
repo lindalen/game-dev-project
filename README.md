@@ -19,3 +19,6 @@ Rules:
 ## Screenshots
 ### Game 1: Demon ball platformer [Time: 1 hour]
 ![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-1.PNG "Game 1 Image")
+
+### Game 2: Boxer vs bear [Time: 1 day]
+![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-2.PNG "Game 2 Image")
