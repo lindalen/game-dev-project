@@ -43,8 +43,7 @@ public class Enemy : MonoBehaviour
             
         } else
         {
-            // enable trigger gotHit
-
+            //an.SetTrigger("HitTrigger"); abandoned due to poor looking animation that impacted gameplay
         }
     }
 
