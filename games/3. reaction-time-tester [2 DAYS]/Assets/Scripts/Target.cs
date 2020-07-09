@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    [SerializeField] private float secsUntilDestruction;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] TargetSpawner spawner;
+    private float secsUntilDestruction;
 
     private float lifeTime;
 
+    private void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        spawner = FindObjectOfType<TargetSpawner>();
+    }
     void Start()
     {
-        secsUntilDestruction = 0.5f;
+        
         lifeTime = Time.time + secsUntilDestruction;
+        
     }
-
+    public void Init(float secsUntilDestruction)
+    {
+        this.secsUntilDestruction = secsUntilDestruction;
+    }
     void Update()
     {
         LifeCycle();
@@ -22,6 +33,7 @@ public class Target : MonoBehaviour
     void LifeCycle()
     {
         if (lifeTime > Time.time) return;
+        SendTargetNotClickedMessage();
         DestroySelf();
 
     }
@@ -31,5 +43,24 @@ public class Target : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //TODO: Add function that destroys self, but first registers successful click
+    private void OnMouseDown()
+    {
+        SendTargetClickedMessage();
+        DestroySelf();
+    }
+
+    private void UpdateBestReactionTime()
+    {
+
+    }
+
+    private void SendTargetNotClickedMessage()
+    {
+        spawner.SendMessage("StopSpawning");
+    }
+
+    private void SendTargetClickedMessage()
+    {
+        spawner.SendMessage("SpawnNextTarget");
+    }
 }
