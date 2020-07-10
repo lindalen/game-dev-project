@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87ab52ebf33cb045b03761800fd5895, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestTimeText: {fileID: 0}
+  targetsClickedText: {fileID: 0}
   fastestClickText: {fileID: 0}
-  levelText: {fileID: 0}
+  levelReachedText: {fileID: 0}
+  canvasObject: {fileID: 0}

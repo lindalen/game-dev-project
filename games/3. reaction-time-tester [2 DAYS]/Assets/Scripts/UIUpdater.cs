@@ -31,39 +31,45 @@ public class UIUpdater : MonoBehaviour
     // Targets clicked text methods
     public void UpdateTargetsClickedText(int targetsClicked)
     {
-        targetsClickedText.color = Color.black;
-        targetsClickedText.text = "Targets clicked: " + targetsClicked;
+        targetsClickedText.color = Color.white;
+        targetsClickedText.text = "" + targetsClicked;
     }
 
     public void UpdateTargetsClickedTextWithRecord(int targetsClicked)
     {
         targetsClickedText.color = Color.green;
-        targetsClickedText.text = "Targets clicked: " + targetsClicked + "(NEW RECORD!)";
+        targetsClickedText.text = targetsClicked + " (New Record!)";
     }
 
     // Fastest click text methods
     public void UpdateFastestClickText(float fastestClickTime)
     {
-        fastestClickText.color = Color.black;
-        fastestClickText.text = "Fastest click: " + fastestClickTime.ToString("F2");
+        fastestClickText.color = Color.white;
+        fastestClickText.text = fastestClickTime.ToString("F2");
     }
 
     public void UpdateFastestClickTextWithRecord(float fastestClickTime)
     {
         fastestClickText.color = Color.green;
-        fastestClickText.text = "Fastest click: " + fastestClickTime.ToString("F2") + "(NEW RECORD!)";
+        fastestClickText.text = fastestClickTime.ToString("F2") + " (New Record!)";
+    }
+
+    public void UpdateFastestClickTextException()
+    {
+        fastestClickText.color = Color.white;
+        fastestClickText.text = "Unknown";
     }
 
     // Level reached text methods
     public void UpdateLevelReachedText(int level)
     {
-        levelReachedText.color = Color.black;
-        levelReachedText.text = "Level reached: " + level;
+        levelReachedText.color = Color.white;
+        levelReachedText.text = "" + level;
     }
 
     public void UpdateLevelReachedTextWithRecord(int level)
     {
         levelReachedText.color = Color.green;
-        levelReachedText.text = "Level reached: " + level + "(NEW RECORD!)";
+        levelReachedText.text = level + " (New Record!)";
     }
 }

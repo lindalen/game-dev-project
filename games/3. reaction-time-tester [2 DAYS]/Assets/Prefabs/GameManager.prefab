@@ -43,3 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc582a64a6f7aeb48801bd3eb8d9fdc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiUpdater: {fileID: 0}
+  targetSpawner: {fileID: 0}

@@ -24,8 +24,14 @@ public class TargetSpawner : MonoBehaviour
     private float xBounds;
     private float yBounds;
     private float targetRadius;
+    private Vector2 lastTargetPosition;
+
+    // Animation stuff
+    private float handLingerTime;
+    private SpriteRenderer handSR;
 
     [SerializeField] private GameObject targetPrefab;
+    [SerializeField] private GameObject longHandPrefab;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private UIUpdater uiUpdater;
 
@@ -44,6 +50,7 @@ public class TargetSpawner : MonoBehaviour
         targetRadius = targetPrefab.GetComponent<CircleCollider2D>().radius;
         margin = targetRadius * 2; // must be done here since it uses value initialized in start method
         uiUpdater = FindObjectOfType<UIUpdater>();
+        handSR = longHandPrefab.GetComponent<SpriteRenderer>();
         SpawnTarget(); // not optimal but logic is ok
     }
 
@@ -58,15 +65,19 @@ public class TargetSpawner : MonoBehaviour
         percentLessSecondsPerSpawn = 0.90f;
         fastestClickTime = 999f;
         targetsSpawned = 0;
+        lastSpawnTime = Time.time;
         level = 1;
         targetsClickedThisLevel = 0;
         targetsPerLevel = 10;
+        handLingerTime = 0.1f;
     }
 
     private void SpawnTarget()
     {
         // gets a new random position within screen
         Vector2 randomPosition = GetRandomPositionWithinScreen();
+        // stores this location as location of last spawned target
+        lastTargetPosition = randomPosition;
         // instantiates target prefab in random position
         GameObject nextTarget = Instantiate(targetPrefab, randomPosition, Quaternion.identity);
         // initializes variable secsUntilDestruction in the newly spawned target
@@ -77,6 +88,8 @@ public class TargetSpawner : MonoBehaviour
     {
         // checks and updates fastest click time if last target was clicked faster than previous record
         UpdateFastestClickTime();
+        // animates a hand that grabs the coin
+        HandAnimation();
         // increments total targets spawned
         IncrementTargetsSpawned();
         // spawns another target
@@ -137,6 +150,7 @@ public class TargetSpawner : MonoBehaviour
     private void StopSpawning()
     {
         gameManager.SendMessage("GameOver");
+        EnemyHandAnimation();
     }
 
     private void SetLastSpawnTime()
@@ -146,16 +160,32 @@ public class TargetSpawner : MonoBehaviour
 
     public int GetTargetsClicked()
     {
-        return targetsSpawned - 1;
+        if (targetsSpawned!=0) return targetsSpawned - 1;
+        return targetsSpawned;
     }
 
     public float GetFastestClickTime()
     {
-        return fastestClickTime;
+        if (fastestClickTime < 500) return fastestClickTime; 
+        return 0;
     }
 
     public int GetLevel()
     {
         return level;
+    }
+
+    private void HandAnimation()
+    {
+        if (handSR.flipY) handSR.flipY = false; // resets hand
+        GameObject hand = Instantiate(longHandPrefab, lastTargetPosition -= new Vector2(0, 2), Quaternion.identity);
+        Destroy(hand, handLingerTime);
+    }
+
+    private void EnemyHandAnimation()
+    {
+        handSR.flipY = true;
+        GameObject hand = Instantiate(longHandPrefab, lastTargetPosition -= new Vector2(0, -2), Quaternion.identity);
+        Destroy(hand, handLingerTime+0.5f);
     }
 }

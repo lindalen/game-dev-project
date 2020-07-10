@@ -45,4 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefab: {fileID: 3859550354397870278, guid: 2f43420d4dc2cfd4f98a63dd1f1fcb4e,
     type: 3}
+  longHandPrefab: {fileID: 0}
   gameManager: {fileID: 0}
+  uiUpdater: {fileID: 0}

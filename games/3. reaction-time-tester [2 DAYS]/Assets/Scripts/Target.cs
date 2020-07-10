@@ -28,7 +28,8 @@ public class Target : MonoBehaviour
     }
     void Update()
     {
-        if (isLifetimeIntialized) LifeCycle();
+        if (!isLifetimeIntialized) return;
+        LifeCycle();
     }
 
     void LifeCycle()

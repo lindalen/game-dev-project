@@ -62,6 +62,11 @@ public class GameManager : MonoBehaviour
     }
     private void CheckIfRecordClickTime(float time)
     {
+        if (time == 0)
+        {
+            uiUpdater.UpdateFastestClickTextException();
+            return;
+        }
         bool newRecord = time < bestClickTime;
 
         if (newRecord)
