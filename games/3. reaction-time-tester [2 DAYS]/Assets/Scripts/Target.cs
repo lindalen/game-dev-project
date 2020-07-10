@@ -9,33 +9,34 @@ public class Target : MonoBehaviour
     private float secsUntilDestruction;
 
     private float lifeTime;
+    private bool isLifetimeIntialized;
 
     private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        spawner = FindObjectOfType<TargetSpawner>();
+        isLifetimeIntialized = false;
     }
     void Start()
     {
-        
-        lifeTime = Time.time + secsUntilDestruction;
-        
+        spawner = FindObjectOfType<TargetSpawner>();
     }
     public void Init(float secsUntilDestruction)
     {
         this.secsUntilDestruction = secsUntilDestruction;
+        lifeTime = Time.time + secsUntilDestruction;
+        isLifetimeIntialized = true;
     }
     void Update()
     {
-        LifeCycle();
+        if (isLifetimeIntialized) LifeCycle();
     }
 
     void LifeCycle()
     {
         if (lifeTime > Time.time) return;
+        Debug.Log("Lifetime: " + lifeTime + " , Time now: " + Time.time);
         SendTargetNotClickedMessage();
         DestroySelf();
-
     }
 
     private void DestroySelf()
@@ -45,22 +46,19 @@ public class Target : MonoBehaviour
 
     private void OnMouseDown()
     {
-        SendTargetClickedMessage();
+        SendTargetClickedMessage(); // tells spawner that this target was successfully clicked
         DestroySelf();
     }
 
-    private void UpdateBestReactionTime()
-    {
-
-    }
 
     private void SendTargetNotClickedMessage()
     {
+        Debug.Log("Clicking target failed, sending game over message");
         spawner.SendMessage("StopSpawning");
     }
 
     private void SendTargetClickedMessage()
     {
-        spawner.SendMessage("SpawnNextTarget");
+        spawner.SendMessage("OnTargetClicked");
     }
 }

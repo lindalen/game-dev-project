@@ -5,51 +5,117 @@ using UnityEngine.UI;
 
 public class TargetSpawner : MonoBehaviour
 {
+    // Spawning stuff
     private float secondsUntilDestruction;
     private float percentLessSecondsPerSpawn;
-    private float bestTime;
+    private float lastSpawnTime;
 
+    // Stats
+    private float fastestClickTime;
+    private int targetsSpawned;
+
+    // Level stuff
+    private int level;
+    private int targetsPerLevel;
+    private int targetsClickedThisLevel;
+
+    // Getting random position within screen stuff
     private float margin;
     private float xBounds;
     private float yBounds;
 
     [SerializeField] private GameObject targetPrefab;
     [SerializeField] private GameObject gameManager;
-    [SerializeField] private Text bestTimeText;
+    [SerializeField] private UIUpdater uiUpdater;
 
-    void Start()
+
+    void Awake()
     {
         secondsUntilDestruction = 2f;
-        percentLessSecondsPerSpawn = 0.95f;
-        bestTime = secondsUntilDestruction;
+        percentLessSecondsPerSpawn = 0.90f;
+        fastestClickTime = 999f;
+        targetsSpawned = 0;
+        margin = 0.5f; // magic number, should be 1/2*sprite radius to ensure visibility    
+        level = 1;
+        targetsClickedThisLevel = 0;
+        targetsPerLevel = 10;
+        // todo: make this a method
+    }
 
-        margin = 0.5f; // magic number, should be 1/2*sprite radius to ensure visibility
-
+    private void Start()
+    {
         Camera cam = Camera.main;
         xBounds = cam.aspect * cam.orthographicSize;
         yBounds = cam.orthographicSize;
 
-        SpawnNextTarget();
+        uiUpdater = FindObjectOfType<UIUpdater>();
+        SpawnTarget();
+        // todo: make this a method
     }
-
-    private void SpawnNextTarget()
+    private void SpawnTarget()
     {
-        // call method to get a new random position within screen
+        // gets a new random position within screen
         Vector2 randomPosition = GetRandomPositionWithinScreen();
-        // call method to instantiate target prefab within
+        // instantiates target prefab in random position
         GameObject nextTarget = Instantiate(targetPrefab, randomPosition, Quaternion.identity);
-        // call method to initialize variable secsUntilDestruction
+        // initializes variable secsUntilDestruction in the newly spawned target
         nextTarget.SendMessage("Init", secondsUntilDestruction);
-        // call method to reduce secsUntilDestruction
-        ReduceSecondsUntilDestruction();
-        // call method to update UI text for best time
-        UpdateBestTime();
     }
 
+    private void OnTargetClicked()
+    {
+        // checks and updates fastest click time if last target was clicked faster than previous record
+        UpdateFastestClickTime();
+        // increments total targets spawned
+        IncrementTargetsSpawned();
+        // spawns another target
+        SpawnTarget();
+        // registers the time the new target was spawned
+        SetLastSpawnTime();
+        // increment targets clicked since last level change
+        IncrementTargetsClickedThisLevel();
+        // checks if targets clicked this level = targets per level, if true, increase difficulty
+        NextLevelCheck();
+    }
+
+    private void NextLevelCheck()
+    {
+        Debug.Log("Targets clicked this level: " + targetsClickedThisLevel);
+
+        if (targetsClickedThisLevel >= targetsPerLevel)
+        {
+            targetsClickedThisLevel = 0;
+            IncrementCurrentLevel();
+            ReduceSecondsUntilDestruction();
+        }
+    }
+    // Probably excessive to make this its own method
+    private void IncrementTargetsClickedThisLevel()
+    {
+        targetsClickedThisLevel++;
+    }
+    private void IncrementCurrentLevel()
+    {
+        level++;
+    }
+    private void IncrementTargetsSpawned()
+    {
+        targetsSpawned++;
+    }
+
+    private void UpdateFastestClickTime()
+    {
+        float clickTime = Time.time - lastSpawnTime; // gets time since target spawned
+
+        if (FasterClickCheck(clickTime)) fastestClickTime = clickTime;  
+    }
+    private bool FasterClickCheck(float clickTime)
+    {
+        return clickTime < fastestClickTime;
+    }
     private void ReduceSecondsUntilDestruction()
     {
         secondsUntilDestruction *= percentLessSecondsPerSpawn;
-        Debug.Log(secondsUntilDestruction);
     }
 
     private Vector2 GetRandomPositionWithinScreen()
@@ -62,11 +128,31 @@ public class TargetSpawner : MonoBehaviour
     private void StopSpawning()
     {
         gameManager.SendMessage("GameOver");
-        UpdateBestTime();
     }
 
-    private void UpdateBestTime()
+    private void SpawnFirstTarget()
     {
-        bestTimeText.text = "Best time: " + secondsUntilDestruction.ToString("F2");
+        SpawnTarget();
+    }
+
+    private void SetLastSpawnTime()
+    {
+        lastSpawnTime = Time.time;
+    }
+
+    public int GetTargetsClicked()
+    {
+        return targetsSpawned - 1;
+    }
+
+    public float GetFastestClickTime()
+    {
+        return fastestClickTime;
+    }
+
+    public int GetLevel()
+    {
+        Debug.Log("Level reached: " + level);
+        return level;
     }
 }
