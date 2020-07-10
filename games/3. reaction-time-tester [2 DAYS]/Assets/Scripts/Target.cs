@@ -34,7 +34,6 @@ public class Target : MonoBehaviour
     void LifeCycle()
     {
         if (lifeTime > Time.time) return;
-        Debug.Log("Lifetime: " + lifeTime + " , Time now: " + Time.time);
         SendTargetNotClickedMessage();
         DestroySelf();
     }
@@ -53,7 +52,6 @@ public class Target : MonoBehaviour
 
     private void SendTargetNotClickedMessage()
     {
-        Debug.Log("Clicking target failed, sending game over message");
         spawner.SendMessage("StopSpawning");
     }
 

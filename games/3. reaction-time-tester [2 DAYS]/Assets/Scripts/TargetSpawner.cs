@@ -23,23 +23,17 @@ public class TargetSpawner : MonoBehaviour
     private float margin;
     private float xBounds;
     private float yBounds;
+    private float targetRadius;
 
     [SerializeField] private GameObject targetPrefab;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private UIUpdater uiUpdater;
 
+    
 
     void Awake()
     {
-        secondsUntilDestruction = 2f;
-        percentLessSecondsPerSpawn = 0.90f;
-        fastestClickTime = 999f;
-        targetsSpawned = 0;
-        margin = 0.5f; // magic number, should be 1/2*sprite radius to ensure visibility    
-        level = 1;
-        targetsClickedThisLevel = 0;
-        targetsPerLevel = 10;
-        // todo: make this a method
+        InitializeVariablesForNewSession();
     }
 
     private void Start()
@@ -47,11 +41,28 @@ public class TargetSpawner : MonoBehaviour
         Camera cam = Camera.main;
         xBounds = cam.aspect * cam.orthographicSize;
         yBounds = cam.orthographicSize;
-
+        targetRadius = targetPrefab.GetComponent<CircleCollider2D>().radius;
+        margin = targetRadius * 2; // must be done here since it uses value initialized in start method
         uiUpdater = FindObjectOfType<UIUpdater>();
-        SpawnTarget();
-        // todo: make this a method
+        SpawnTarget(); // not optimal but logic is ok
     }
+
+    public void ResetAndStartSpawner()
+    {
+        InitializeVariablesForNewSession();
+        SpawnTarget();
+    }
+    private void InitializeVariablesForNewSession()
+    {
+        secondsUntilDestruction = 2f;
+        percentLessSecondsPerSpawn = 0.90f;
+        fastestClickTime = 999f;
+        targetsSpawned = 0;
+        level = 1;
+        targetsClickedThisLevel = 0;
+        targetsPerLevel = 10;
+    }
+
     private void SpawnTarget()
     {
         // gets a new random position within screen
@@ -80,8 +91,6 @@ public class TargetSpawner : MonoBehaviour
 
     private void NextLevelCheck()
     {
-        Debug.Log("Targets clicked this level: " + targetsClickedThisLevel);
-
         if (targetsClickedThisLevel >= targetsPerLevel)
         {
             targetsClickedThisLevel = 0;
@@ -130,11 +139,6 @@ public class TargetSpawner : MonoBehaviour
         gameManager.SendMessage("GameOver");
     }
 
-    private void SpawnFirstTarget()
-    {
-        SpawnTarget();
-    }
-
     private void SetLastSpawnTime()
     {
         lastSpawnTime = Time.time;
@@ -152,7 +156,6 @@ public class TargetSpawner : MonoBehaviour
 
     public int GetLevel()
     {
-        Debug.Log("Level reached: " + level);
         return level;
     }
 }

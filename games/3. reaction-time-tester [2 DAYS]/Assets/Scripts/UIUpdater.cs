@@ -32,13 +32,13 @@ public class UIUpdater : MonoBehaviour
     public void UpdateTargetsClickedText(int targetsClicked)
     {
         targetsClickedText.color = Color.black;
-        targetsClickedText.text = "Targets clicked: " + targetsClicked.ToString("F2");
+        targetsClickedText.text = "Targets clicked: " + targetsClicked;
     }
 
     public void UpdateTargetsClickedTextWithRecord(int targetsClicked)
     {
         targetsClickedText.color = Color.green;
-        targetsClickedText.text = "Targets clicked: " + targetsClicked.ToString("F2") + "(NEW RECORD!)";
+        targetsClickedText.text = "Targets clicked: " + targetsClicked + "(NEW RECORD!)";
     }
 
     // Fastest click text methods
@@ -58,12 +58,12 @@ public class UIUpdater : MonoBehaviour
     public void UpdateLevelReachedText(int level)
     {
         levelReachedText.color = Color.black;
-        levelReachedText.text = "Level reached: " + level.ToString("F2");
+        levelReachedText.text = "Level reached: " + level;
     }
 
     public void UpdateLevelReachedTextWithRecord(int level)
     {
         levelReachedText.color = Color.green;
-        levelReachedText.text = "Level reached: " + level.ToString("F2") + "(NEW RECORD!)";
+        levelReachedText.text = "Level reached: " + level + "(NEW RECORD!)";
     }
 }

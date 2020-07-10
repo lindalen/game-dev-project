@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private bool isGameOver;
-    private int targetsClicked;
-
     // Stats
     private float bestClickTime;
     private float bestTargetsClicked;
@@ -17,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        InitVariablesForFirstPlaythrough();
+        InitVariablesForFirstSession();
     }
 
     private void Start()
@@ -27,28 +24,26 @@ public class GameManager : MonoBehaviour
         uiUpdater.DisableCanvas();
     }
 
-
+  
     public void GameOver()
     {
-        isGameOver = true;
-        Debug.Log("GameOver() called.");
         // Checks if stats from last session are records and updates UI elements accordingly
         RecordCheck();
 
         // Enables the panel that displays stats and a restart button
         uiUpdater.EnableCanvas();
-
-        Debug.Log("Fastest click: " + bestClickTime);
     }
 
-    private void RestartGame()
+    public void RestartGame()
     {
-        // TODO: make this
-        // does the same as Start and Awake, except it keeps records etc
+        // Disables game over screen
+        uiUpdater.DisableCanvas();
+
+        // Resets and starts target spawner
+        targetSpawner.ResetAndStartSpawner();
     }
-    private void InitVariablesForFirstPlaythrough()
+    private void InitVariablesForFirstSession()
     {
-        isGameOver = false;
         bestClickTime = 9999f; // prob not great way to do this
         bestTargetsClicked = 0;
         bestLevelReached = 1;
