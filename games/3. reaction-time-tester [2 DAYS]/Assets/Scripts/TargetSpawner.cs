@@ -34,8 +34,9 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField] private GameObject longHandPrefab;
     [SerializeField] private GameObject gameManager;
     [SerializeField] private UIUpdater uiUpdater;
+    [SerializeField] private AudioPlayer audioPlayer;
 
-    
+
 
     void Awake()
     {
@@ -48,6 +49,7 @@ public class TargetSpawner : MonoBehaviour
         xBounds = cam.aspect * cam.orthographicSize;
         yBounds = cam.orthographicSize;
         targetRadius = targetPrefab.GetComponent<CircleCollider2D>().radius;
+        audioPlayer = AudioPlayer.instance;
         margin = targetRadius * 2; // must be done here since it uses value initialized in start method
         uiUpdater = FindObjectOfType<UIUpdater>();
         handSR = longHandPrefab.GetComponent<SpriteRenderer>();
@@ -88,6 +90,8 @@ public class TargetSpawner : MonoBehaviour
     {
         // checks and updates fastest click time if last target was clicked faster than previous record
         UpdateFastestClickTime();
+        // plays coin grab sound
+        audioPlayer.PlaySound("Coin_grab");
         // animates a hand that grabs the coin
         HandAnimation();
         // increments total targets spawned
@@ -100,6 +104,7 @@ public class TargetSpawner : MonoBehaviour
         IncrementTargetsClickedThisLevel();
         // checks if targets clicked this level = targets per level, if true, increase difficulty
         NextLevelCheck();
+        
     }
 
     private void NextLevelCheck()
@@ -151,8 +156,12 @@ public class TargetSpawner : MonoBehaviour
     {
         gameManager.SendMessage("GameOver");
         EnemyHandAnimation();
+        PlayEnemyGrabSound();
     }
-
+    private void PlayEnemyGrabSound()
+    {
+        audioPlayer.PlaySound("Coin_enemy_grab");
+    }
     private void SetLastSpawnTime()
     {
         lastSpawnTime = Time.time;

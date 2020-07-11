@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIUpdater uiUpdater;
     [SerializeField] private TargetSpawner targetSpawner;
 
+
     private void Awake()
     {
         InitVariablesForFirstSession();
