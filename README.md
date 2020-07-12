@@ -22,3 +22,7 @@ Rules:
 
 ### Game 2: Boxer vs bear [Time: 1 day]
 ![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-2.PNG "Game 2 Image")
+
+### Game 3: Coin Grabber [Time: 2 days]
+![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-3.PNG "Game 3 Image")
+
