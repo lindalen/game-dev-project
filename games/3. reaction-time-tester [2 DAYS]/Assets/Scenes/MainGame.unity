@@ -178,16 +178,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
-    m_FontSize: 45
+    m_FontSize: 55
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 45
+    m_MaxSize: 55
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -260,11 +256,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -591,23 +583,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
-    m_FontSize: 30
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
-    m_MaxSize: 40
+    m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart
+  m_Text: RESTART
 --- !u!222 &521745586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -760,11 +748,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -848,11 +832,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -911,11 +891,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -1012,11 +988,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -1330,11 +1302,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-<<<<<<< Updated upstream
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-=======
     m_Font: {fileID: 12800000, guid: 5d650cfccebc7894b94fb054d76b0ece, type: 3}
->>>>>>> Stashed changes
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0

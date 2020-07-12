@@ -169,10 +169,6 @@ public class TargetSpawner : MonoBehaviour
 
     public int GetTargetsClicked()
     {
-<<<<<<< Updated upstream
-        if (targetsSpawned!=0) return targetsSpawned - 1;
-=======
->>>>>>> Stashed changes
         return targetsSpawned;
     }
 

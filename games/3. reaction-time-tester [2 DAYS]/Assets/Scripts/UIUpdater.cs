@@ -12,11 +12,7 @@ public class UIUpdater : MonoBehaviour
     [SerializeField] private GameObject canvasObject;
     private Canvas gameCanvas;
 
-<<<<<<< Updated upstream
-    private void Start()
-=======
     private void Awake()
->>>>>>> Stashed changes
     {
         gameCanvas = canvasObject.GetComponent<Canvas>(); // should only be one canvas
     }
