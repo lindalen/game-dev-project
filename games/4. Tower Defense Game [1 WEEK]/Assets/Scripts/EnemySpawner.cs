@@ -26,7 +26,7 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy(GameObject enemyPrefab)
     {
         var path = GetRandomPath();
-
+        Debug.Log("Is top path: " + path[0]);
         var enemy = Instantiate(enemyPrefab, path[0]+new Vector3(-1,0,0), Quaternion.identity);
 
         enemy.GetComponent<EnemyMovement>().SetPathAndStartMoving(path);

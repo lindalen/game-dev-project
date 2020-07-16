@@ -7,6 +7,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     private List<Vector3> path;
 
+
+    private EnemyBehaviour enemyBehaviour;
+
     // Use this for initialization
     public void SetPathAndStartMoving(List<Vector3> path)
     {
@@ -26,16 +29,28 @@ public class EnemyMovement : MonoBehaviour
             //TODO: Add death check
             while (Vector3.Distance(transform.position, waypoint) > .01f)
             {
-                Debug.Log("Moving towards " + waypoint + " from " + transform.position);
                 var test = Vector3.MoveTowards(transform.position, waypoint, moveSpeed * Time.deltaTime);
-                Debug.Log(moveSpeed * Time.deltaTime);
                 transform.position = test;
-                
+                RotateTowardsWaypoint(waypoint);
                 yield return null;
             }
         }
-        // TODO: call damage church thing here + destroy gameobject
+        OnChurchReached(); 
     }
 
-    
+    private void RotateTowardsWaypoint(Vector3 waypoint)
+    {
+        Vector3 relativePos = waypoint - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        rotation.x = transform.rotation.x;
+        rotation.y = transform.rotation.y;
+        transform.rotation = rotation;
+    }
+
+    private void OnChurchReached()
+    {
+        ChurchBehaviour church = GameObject.FindGameObjectWithTag("Church").GetComponent<ChurchBehaviour>();
+        church.SendMessage("OnEnemyReached");
+        Destroy(gameObject);
+    }
 }

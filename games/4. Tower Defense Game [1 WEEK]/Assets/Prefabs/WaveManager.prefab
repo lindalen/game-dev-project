@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 160571f897242fa41a687ebb27e17d75, type: 2}
-  crawlerPrefab: {fileID: 5834195533414460576, guid: bb2c3515124e8da498559fd0f70b8ff6,
+  crawlerPrefab: {fileID: 4950701842848726273, guid: 13c36a4605141f34e862f1c7807c163d,
     type: 3}
-  demonPrefab: {fileID: 1486768445981856116, guid: f5523812c4871814b986486dcae53679,
+  demonPrefab: {fileID: 7901370221207327265, guid: 37b121b4970bd4e428367c1a5bf3d78d,
     type: 3}
 --- !u!114 &3785509740101809244
 MonoBehaviour:
@@ -62,7 +62,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b9ae19592aaa0542ac056e6ee0c37a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topPathPrefab: {fileID: 5696043862083610097, guid: 30558fe8b2d0e1c448bf706a0ae53283,
-    type: 3}
-  bottomPathPrefab: {fileID: 4395650435958724329, guid: 57d2f5ac8d13adb47b7b436e040113d5,
-    type: 3}
+  topPathPrefab: {fileID: 0}
+  bottomPathPrefab: {fileID: 0}
