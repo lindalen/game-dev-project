@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
     private List<Vector3> topPath;
     private List<Vector3> bottomPath;
 
-    private void Start()
+    private void Awake()
     {
         topPath = topPathPrefab.GetComponent<Path>().GetWaypoints();
         bottomPath = bottomPathPrefab.GetComponent<Path>().GetWaypoints();
@@ -25,8 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy(GameObject enemyPrefab)
     {
+        //todo: check the randompath, something seems funky
         var path = GetRandomPath();
-        Debug.Log("Is top path: " + path[0]);
         var enemy = Instantiate(enemyPrefab, path[0]+new Vector3(-1,0,0), Quaternion.identity);
 
         enemy.GetComponent<EnemyMovement>().SetPathAndStartMoving(path);

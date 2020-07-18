@@ -1,33 +1,87 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private Wave[] waves;
     [SerializeField] public GameObject crawlerPrefab;
     [SerializeField] private GameObject demonPrefab;
+
+    // UI elements
+    [SerializeField] private Text waveCooldownText;
+    [SerializeField] private Text currentWaveText;
+
     // Components
     private EnemySpawner spawner;
 
     // Fields
     private int currentWaveNumber;
+    private float secsBetweenWaves;
 
-    // Start is called before the first frame update
+    private bool startTimer;
+    private float waveTimeLeft;
+
     void Awake()
     {
+        Debug.Log("WaveManager Awake() called.");
         spawner = GetComponent<EnemySpawner>();
-
         currentWaveNumber = 0;
+        secsBetweenWaves = 10f;
+        waveTimeLeft = 0;
+    }
+    void Update()
+    {
+        if (Time.time < waveTimeLeft)
+        {
+            DisplayWaveCooldown(waveTimeLeft - Time.time);
+        } 
+        //ResetWaveCooldownDisplay();
+    }
+    public IEnumerator StartSpawning()
+    {
+        Debug.Log("Spawning started.");
+        SpawnWave(currentWaveNumber);
+
+        yield return null;
     }
 
-    void Start()
+    private IEnumerator StartCooldownThenSpawnNextWave()
     {
-        SpawnWave();
+        currentWaveNumber++;
+        if (currentWaveNumber < waves.Length)
+        {
+            waveTimeLeft = Time.time + secsBetweenWaves;
+            yield return new WaitForSeconds(secsBetweenWaves);
+            SpawnWave(currentWaveNumber);
+            
+        }
+        yield return null; // victory game over
+    }
+    private void DisplayCurrentWave()
+    {
+        currentWaveText.text = "Wave " + currentWaveNumber+1;
     }
 
-    public void SpawnWave()
+    private void DisplayWaveCooldown(float timeLeft)
     {
+        waveCooldownText.text = timeLeft.ToString("F2") + " seconds left until next wave.";
+    }
+
+    private void ResetWaveCooldownDisplay()
+    {
+        waveCooldownText.text = "";
+    }
+
+    /*public void StopSpawning()
+    {
+        //StopCoroutine(SpawnLoop());
+    }*/
+    public void SpawnWave(int currentWaveNumber)
+    {
+        Debug.Log("Spawning wave " + currentWaveNumber);
+        DisplayCurrentWave();
         var currentWave = waves[currentWaveNumber];
 
         float spawnRate = currentWave.spawnRate;
@@ -37,6 +91,7 @@ public class WaveManager : MonoBehaviour
 
         StartCoroutine(SpawnCrawlersInWave(crawlersToSpawn, spawnRate));
         StartCoroutine(SpawnDemonsInWave(demonsToSpawn, spawnRate));
+        StartCoroutine(StartCooldownThenSpawnNextWave());
     }
 
     private IEnumerator SpawnCrawlersInWave(int crawlerCount, float spawnRate)

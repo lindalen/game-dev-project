@@ -46,10 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 160571f897242fa41a687ebb27e17d75, type: 2}
+  - {fileID: 11400000, guid: 47ab7890ac11f05439f963103c57df0a, type: 2}
   crawlerPrefab: {fileID: 4950701842848726273, guid: 13c36a4605141f34e862f1c7807c163d,
     type: 3}
   demonPrefab: {fileID: 7901370221207327265, guid: 37b121b4970bd4e428367c1a5bf3d78d,
     type: 3}
+  waveCooldownText: {fileID: 0}
+  currentWaveText: {fileID: 0}
 --- !u!114 &3785509740101809244
 MonoBehaviour:
   m_ObjectHideFlags: 0
