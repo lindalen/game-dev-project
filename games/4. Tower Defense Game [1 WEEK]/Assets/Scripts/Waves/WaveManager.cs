@@ -35,8 +35,7 @@ public class WaveManager : MonoBehaviour
         if (Time.time < waveTimeLeft)
         {
             DisplayWaveCooldown(waveTimeLeft - Time.time);
-        } 
-        //ResetWaveCooldownDisplay();
+        } else { ResetWaveCooldownDisplay(); }
     }
     public IEnumerator StartSpawning()
     {
