@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5076344195797540097}
   - component: {fileID: 5076344195797540096}
   - component: {fileID: 5076344195797540127}
+  - component: {fileID: -4049441068649325229}
+  - component: {fileID: -6789337972187937542}
   m_Layer: 0
   m_Name: DummyTower
   m_TagString: Untagged
@@ -62,3 +64,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   searchTag: Enemy
   radius: 0
+--- !u!114 &-4049441068649325229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5076344195797540126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94c3e2a1e57970438fe3bcaeef2a2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6789337972187937542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5076344195797540126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab815c887fe7ad643ae1ce6d24c2e814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 6
+  attacksPerSecond: 3
+  attackRadius: 5
+  finder: {fileID: 0}
+  attacker: {fileID: 0}
+  col: {fileID: 0}

@@ -19,6 +19,7 @@ public class ObjectInRadiusFinder : MonoBehaviour
         Debug.Log("Radius: " + radius);
         Debug.Log("Center: " + center);
     }
+
     public List<GameObject> GetEnemiesInRange()
     {
         Collider2D[] collidersInRange = GetCollidersInRange();
