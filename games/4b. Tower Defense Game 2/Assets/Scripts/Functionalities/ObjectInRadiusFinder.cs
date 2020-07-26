@@ -16,8 +16,8 @@ public class ObjectInRadiusFinder : MonoBehaviour
 
         center = transform.position; //assumes that the gameobject is static
         radius = col.radius; //assumes two things; 1. tower has a collider, 2. the collider corresponds to attack range
-        Debug.Log("Radius: " + radius);
-        Debug.Log("Center: " + center);
+        //Debug.Log("Radius: " + radius);
+        //Debug.Log("Center: " + center);
     }
 
     public List<GameObject> GetEnemiesInRange()
@@ -29,11 +29,11 @@ public class ObjectInRadiusFinder : MonoBehaviour
 
         foreach (Collider2D col in collidersInRange)
         {
-            Debug.Log("Tag of found collider: " + col.gameObject.tag);
+            //Debug.Log("Tag of found collider: " + col.gameObject.tag);
             if (col.gameObject.tag == searchTag)
             {
                 enemies.Add(col.gameObject);
-                Debug.Log("Enemy found and added.");
+                //Debug.Log("Enemy found and added.");
             }
         }
         return enemies;

@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void OnAttacked(float damage)
     {
         hp -= damage;
-        Debug.Log("Enemy hp: " + hp);
+        //Debug.Log("Enemy hp: " + hp);
         DeathCheck();
     }
 

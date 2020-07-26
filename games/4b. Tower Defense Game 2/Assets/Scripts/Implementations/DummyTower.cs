@@ -61,6 +61,6 @@ public class DummyTower : MonoBehaviour, IAttacker
         List<GameObject> enemiesInRange = finder.GetEnemiesInRange();
         if (enemiesInRange.Count < 1) return;
         attacker.AttackObject(enemiesInRange[0], damage);
-        Debug.Log("Attack fired.");
+        //Debug.Log("Attack fired.");
     }
 }
