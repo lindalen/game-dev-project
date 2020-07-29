@@ -26,3 +26,6 @@ Rules:
 ### Game 3: Coin Grabber [Time: 2 days]
 ![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-3.PNG "Game 3 Image")
 
+
+### Game 4: Defend The Cheese! [Time: 7 days]
+![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-4.PNG "Game 4 Image")
