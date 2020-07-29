@@ -13,7 +13,7 @@ public class TowerPositionValidator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Path")
+        if (col.gameObject.tag == "Path") // adding  || col.gameObject.tag == "Tower" doesnt work, because you can leave a trigger within another trigger
         {
             isValidPosition = false;
         }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8851731448404840150}
   - component: {fileID: 8851731448404840149}
   - component: {fileID: 8851731448404840151}
+  - component: {fileID: 8851731449145099374}
   m_Layer: 0
   m_Name: WaveManager
   m_TagString: Untagged
@@ -44,6 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3dac7611e60ba54d9234d292ad5547a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveConfigs:
+  - {fileID: 11400000, guid: 34f9fd1da02529a47b380c3f9d53e712, type: 2}
+  - {fileID: 11400000, guid: 88c7847ec5afe19428946c092b4c9376, type: 2}
+  - {fileID: 11400000, guid: f52e7db4039dde94e8e7a853dee56ffe, type: 2}
+  - {fileID: 11400000, guid: 153b3adb518d32a4e87950b50d4530cd, type: 2}
+  secondsBetweenWaves: 30
 --- !u!114 &8851731448404840151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,4 +63,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcb9a84463711c4097d4faf34d009ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  enemyPrefab: {fileID: 7225143654640140577, guid: 5979b8167eae552498c542d5db20f01a,
+    type: 3}
+--- !u!114 &8851731449145099374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851731448404840148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff096b0c3624a034c936a4165fdf0033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWaveText: {fileID: 0}
+  waveCooldownText: {fileID: 0}

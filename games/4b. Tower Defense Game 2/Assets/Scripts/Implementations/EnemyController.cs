@@ -29,6 +29,8 @@ public class EnemyController : MonoBehaviour, IDamageable
     public void DeathCheck()
     {
         if (hp > 0) return;
+        ResourceController church = GameObject.FindGameObjectWithTag("Church").GetComponent<ResourceController>();
+        church.SendMessage("OnEnemyKill");
         Destroy(gameObject);
     }
 }

@@ -43,13 +43,18 @@ public class PrefabSpriteAttacher : MonoBehaviour
         // right click to disable
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            isAttached = false;
-            if (prefabInstance!=null)
-            {
-                Destroy(prefabInstance);
-            }
-  
-            Debug.Log("Attachment disabled.");
+            DisableAttachment();
         }
+    }
+
+    public void DisableAttachment()
+    {
+        isAttached = false;
+        if (prefabInstance != null)
+        {
+            Destroy(prefabInstance);
+        }
+
+        Debug.Log("Attachment disabled.");
     }
 }

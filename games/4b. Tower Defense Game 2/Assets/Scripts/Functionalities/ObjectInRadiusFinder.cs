@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectInRadiusFinder : MonoBehaviour
 {
     [SerializeField] private string searchTag;
-    [SerializeField] private float radius;
+    private float radius;
 
     private Vector3 center;
     CircleCollider2D col;
@@ -15,7 +15,7 @@ public class ObjectInRadiusFinder : MonoBehaviour
         col = GetComponent<CircleCollider2D>();
 
         center = transform.position; //assumes that the gameobject is static
-        radius = col.radius; //assumes two things; 1. tower has a collider, 2. the collider corresponds to attack range
+        //radius = col.radius; //assumes two things; 1. tower has a collider, 2. the collider corresponds to attack range
         //Debug.Log("Radius: " + radius);
         //Debug.Log("Center: " + center);
     }
@@ -49,9 +49,8 @@ public class ObjectInRadiusFinder : MonoBehaviour
         GetEnemiesInRange();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetRadius(float radius)
     {
-        
+        this.radius = radius;
     }
 }
