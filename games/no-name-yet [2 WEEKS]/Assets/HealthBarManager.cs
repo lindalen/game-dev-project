@@ -8,18 +8,16 @@ public class HealthBarManager : MonoBehaviour
     [SerializeField] FloatVariable maxHP;
     [SerializeField] FloatVariable currentHP;
     [SerializeField] Text healthText;
+
+    BigNumberFormatter formatter;
     // Start is called before the first frame update
     void Start()
     {
         transform.localScale = new Vector3(currentHP.RuntimeValue / maxHP.RuntimeValue, 1f, 1f);
-        healthText.text = currentHP.RuntimeValue + " / " + maxHP.RuntimeValue;
+        formatter = GetComponent<BigNumberFormatter>();
+        UpdateHealthBarText(currentHP.RuntimeValue, maxHP.RuntimeValue);
         InvokeRepeating("TestHealthBar", 0.5f, 0.5f);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void TestHealthBar()
@@ -36,13 +34,21 @@ public class HealthBarManager : MonoBehaviour
         // not elegant but it works
         if (current / max < 0)
         {
-            healthText.text = 0 + " / " + maxHP.RuntimeValue;
+            // UPDATES BAR TEXT
+            UpdateHealthBarText(0, max);
+            // UPDATES HEALTH BAR
             transform.localScale = new Vector3(0, 1f, 1f);
             return;
         }
-
+        // UPDATES HEALTH BAR
         transform.localScale = new Vector3(current / max, 1f, 1f);
-        healthText.text = current + " / " + max;
+        // UPDATES BAR TEXT
+        UpdateHealthBarText(current, max);
+    }
+
+    void UpdateHealthBarText(float current, float max)
+    {
+        healthText.text = formatter.GetFormattedNumber(current) + " / " + formatter.GetFormattedNumber(max);
     }
 
 }
