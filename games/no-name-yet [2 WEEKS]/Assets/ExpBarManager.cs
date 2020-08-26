@@ -14,6 +14,7 @@ public class ExpBarManager : MonoBehaviour
     [SerializeField] Text expText;
     [SerializeField] Text levelText;
 
+    float lastLevelExp;
     float nextLevelExp;
 
     void Awake()
@@ -21,6 +22,7 @@ public class ExpBarManager : MonoBehaviour
         formatter = GetComponent<BigNumberFormatter>();
         if (playerExp.RuntimeValue<baseLevelExp.RuntimeValue)
         {
+            lastLevelExp = 0;
             nextLevelExp = baseLevelExp.RuntimeValue;
             playerLevel.RuntimeValue = 1;
         } else
@@ -34,7 +36,6 @@ public class ExpBarManager : MonoBehaviour
         UpdateExpBar();
         UpdateExpText();
         UpdateLevelText();
-        Debug.Log("Level is " + playerLevel.RuntimeValue);
     }
 
     private void SetLevelFromExp()
@@ -42,20 +43,25 @@ public class ExpBarManager : MonoBehaviour
         nextLevelExp = baseLevelExp.RuntimeValue; //not completely sure about this
         while (playerExp.RuntimeValue>nextLevelExp)
         {
-            nextLevelExp *= levelMultiplier.RuntimeValue;
-            playerLevel.RuntimeValue+=1;
-            Debug.Log("Level is now " + playerLevel.RuntimeValue);
+            LevelUp();
         }
     }
 
+    private void LevelCheck()
+    {
+        if (playerExp.RuntimeValue >= nextLevelExp)
+        {
+            LevelUp();
+
+        }
+    }
     private void UpdateExpBar()
     {
-        transform.localScale = new Vector3(playerExp.RuntimeValue / nextLevelExp, 1f, 1f);
+        transform.localScale = new Vector3((playerExp.RuntimeValue-lastLevelExp) / (nextLevelExp - lastLevelExp), 1f, 1f);
     }
 
     private void UpdateExpText()
     {
-        Debug.Log("Updating text");
         expText.text = formatter.GetFormattedNumber(playerExp.RuntimeValue) + " / " + formatter.GetFormattedNumber(nextLevelExp);
     }
 
@@ -63,9 +69,29 @@ public class ExpBarManager : MonoBehaviour
     {
         levelText.text = ""+playerLevel.RuntimeValue;
     }
+
+    private void ExpBarReset()
+    {
+
+    }
+    private void LevelUp()
+    {
+        lastLevelExp = nextLevelExp;
+        nextLevelExp *= levelMultiplier.RuntimeValue;
+        playerLevel.RuntimeValue += 1;
+        UpdateLevelText();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        LevelCheck();
+        UpdateExpText();
+        UpdateExpBar();
+    }
+
+    private void IncreaseExp()
+    {
+        playerExp.RuntimeValue += 10000;
     }
 }
