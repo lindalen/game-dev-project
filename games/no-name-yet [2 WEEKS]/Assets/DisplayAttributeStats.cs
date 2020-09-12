@@ -9,15 +9,10 @@ public class DisplayAttributeStats : MonoBehaviour
     [SerializeField] Text currentValueText;
     [SerializeField] Text currentValuePerSecondText;
 
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateText(float cost, float current, float persec)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        upgradeCostText.text = "Cost: " + cost;
+        currentValueText.text = "Value: " + current;
+        currentValuePerSecondText.text = persec + " times/s";
     }
 }
