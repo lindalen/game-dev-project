@@ -26,7 +26,7 @@ public class Defender : MonoBehaviour
     void Update()
     {
         if (!active) return;
-        DefenseLoop();
+        //DefenseLoop(); //DEACTVATED
     }
 
     private void DefenseLoop()

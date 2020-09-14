@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] FloatVariable playerCurrentHealth;
     [SerializeField] FloatVariable playerMaxHealth;
+    [SerializeField] FloatVariable playerGold;
+    [SerializeField] FloatVariable playerExp;
 
     [SerializeField] GameObject healerGO;
     [SerializeField] GameObject attackerGO;
@@ -23,12 +26,12 @@ public class PlayerManager : MonoBehaviour
         healer = healerGO.GetComponent<HealthIncreaser>();
         defender = defenderGO.GetComponent<Defender>();
     }
-
-    // Update is called once per frame
+    
+    /*
     void Update()
     {
         DeathCheck();
-    }
+    } */
 
     public void InitPlayer()
     {
@@ -38,16 +41,39 @@ public class PlayerManager : MonoBehaviour
         healer.SetActive(true);
     }
 
-    private void DeathCheck()
+    internal void FullyHeal()
     {
-        if (playerCurrentHealth.RuntimeValue > 0) return;
-        StopPlayer();
+        playerCurrentHealth.RuntimeValue = playerMaxHealth.RuntimeValue;
     }
+
+    /*
+private void DeathCheck()
+{
+   if (playerCurrentHealth.RuntimeValue > 0) return;
+   StopPlayer();
+} */
 
     public void StopPlayer()
     {
         attacker.SetActive(false);
         defender.SetActive(false);
         healer.SetActive(false);
+    }
+    public void AddGold(float value)
+    {
+        playerGold.RuntimeValue += Mathf.Abs(value);
+        Debug.Log("Gold is now: " + playerGold.RuntimeValue);
+    }
+    public void AddExp(float value)
+    {
+        playerExp.RuntimeValue += Mathf.Abs(value);
+    }
+    public float GetCurrentHP()
+    {
+        return playerCurrentHealth.RuntimeValue;
+    }
+    public float GetMaxHP()
+    {
+        return playerMaxHealth.RuntimeValue;
     }
 }
