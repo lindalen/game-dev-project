@@ -7,17 +7,19 @@ public class EnemyAttacker : MonoBehaviour
     [SerializeField] FloatVariable enemyDMG;
     [SerializeField] FloatVariable enemyAttackFreq;
     [SerializeField] FloatVariable targetHealth;
+    [SerializeField] GameObject targetGO;
 
     private bool active;
     private float lastAttackTime;
+    private PlayerManager playerManager;
 
     private void Awake()
     {
+        playerManager = targetGO.GetComponent<PlayerManager>();
         active = false;
         lastAttackTime = Time.time;
     }
-    // todo: add scriptableboject for player damage reduction
-    // todo: any change to the player health is multiplied by damagereduction
+
     private void Update()
     {
         if (!active) return;
@@ -27,7 +29,9 @@ public class EnemyAttacker : MonoBehaviour
     private void Attack()
     {
         if (Time.time < lastAttackTime + (1 / enemyAttackFreq.RuntimeValue)) return;
-        targetHealth.RuntimeValue -= enemyDMG.RuntimeValue;
+        float totalAttackDamage = enemyDMG.RuntimeValue * playerManager.GetCurrentDamageReduction();
+        targetHealth.RuntimeValue -= totalAttackDamage;
+        Debug.Log("Attaking with DMG: " + enemyDMG.RuntimeValue + ", DMGRED: " + playerManager.GetCurrentDamageReduction() + ", ACTDMG: " + totalAttackDamage);
         lastAttackTime = Time.time;
     }
     public void SetActive(bool b)

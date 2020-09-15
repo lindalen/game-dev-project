@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] FloatVariable playerMaxHealth;
     [SerializeField] FloatVariable playerGold;
     [SerializeField] FloatVariable playerExp;
+    [SerializeField] FloatVariable playerDamageReduction;
 
     [SerializeField] GameObject healerGO;
     [SerializeField] GameObject attackerGO;
@@ -18,20 +19,30 @@ public class PlayerManager : MonoBehaviour
     private HealthIncreaser healer;
     private Defender defender;
 
-
+    private float currentDamageReduction;
 
     void Awake()
     {
         attacker = attackerGO.GetComponent<Attacker>();
         healer = healerGO.GetComponent<HealthIncreaser>();
         defender = defenderGO.GetComponent<Defender>();
+        currentDamageReduction = 1;
     }
     
-    /*
-    void Update()
+    public void ActivateDamageReduction()
     {
-        DeathCheck();
-    } */
+        currentDamageReduction = 1 - playerDamageReduction.RuntimeValue;
+    }
+
+    public void DeactivateDamageReduction()
+    {
+        currentDamageReduction = 1;
+    }
+
+    public float GetCurrentDamageReduction()
+    {
+        return currentDamageReduction;
+    }
 
     public void InitPlayer()
     {

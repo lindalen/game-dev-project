@@ -29,6 +29,9 @@ public class ExpBarManager : MonoBehaviour
         {
             SetLevelFromExp();
         }
+        UpdateExpBar();
+        UpdateExpText();
+        UpdateLevelText();
     }
 
     private void Start()

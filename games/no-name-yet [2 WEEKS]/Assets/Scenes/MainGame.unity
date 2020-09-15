@@ -782,6 +782,7 @@ MonoBehaviour:
   enemyDMG: {fileID: 11400000, guid: 05f31d3c040ac76468cac139d9b873db, type: 2}
   enemyAttackFreq: {fileID: 11400000, guid: e41ff5cda2423b24e91aa72a552a75f9, type: 2}
   targetHealth: {fileID: 11400000, guid: 23790ee85e5926a48b3e212949b1b6be, type: 2}
+  targetGO: {fileID: 756079686}
 --- !u!114 &273822009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1741,6 +1742,8 @@ MonoBehaviour:
   playerMaxHealth: {fileID: 11400000, guid: 11da6b837bdd6a044add99af346f7f62, type: 2}
   playerGold: {fileID: 11400000, guid: df573b708648a7a46abf83526dd4a6b8, type: 2}
   playerExp: {fileID: 11400000, guid: 5ad781c9217594f4bad8a9f17386be14, type: 2}
+  playerDamageReduction: {fileID: 11400000, guid: 9bd63cb1991859d419f628805b680672,
+    type: 2}
   healerGO: {fileID: 374607742}
   attackerGO: {fileID: 2111684944}
   defenderGO: {fileID: 2071096327}
@@ -4259,9 +4262,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f11588c52649a45a5f36b83b86b2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageReductionPercentage: {fileID: 0}
-  damageCooldown: {fileID: 0}
-  defenseDuration: {fileID: 0}
+  damageReductionPercentage: {fileID: 11400000, guid: 9bd63cb1991859d419f628805b680672,
+    type: 2}
+  defenseCooldown: {fileID: 11400000, guid: dea8a51fa78fd7b4b805c54ac6649354, type: 2}
+  defenseDuration: {fileID: 11400000, guid: 8535769376a0a13478a46df4c5ac338a, type: 2}
   playerManagerGO: {fileID: 756079686}
   healthBar: {fileID: 811430667}
 --- !u!1 &2111684944

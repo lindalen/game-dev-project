@@ -18,6 +18,7 @@ public class GameLoopManager : MonoBehaviour
         enemyManager = enemyGO.GetComponent<EnemyManager>();
     }
 
+
     void Update()
     {
         GameLoop();

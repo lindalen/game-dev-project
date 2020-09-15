@@ -6,19 +6,28 @@ using UnityEngine.UI;
 public class Defender : MonoBehaviour
 {
     [SerializeField] FloatVariable damageReductionPercentage;
-    [SerializeField] FloatVariable damageCooldown;
+    [SerializeField] FloatVariable defenseCooldown;
     [SerializeField] FloatVariable defenseDuration;
     [SerializeField] GameObject playerManagerGO;
 
     [SerializeField] Image healthBar;
 
-    private bool active = false;
+    private bool active;
+
     private float lastDefenseTime;
+    private float totalWaitBetweenDefenseTime;
+
+    private bool isDefending;
+
     private PlayerManager playerManager;
 
     // Start is called before the first frame update
     void Awake()
     {
+        playerManager = playerManagerGO.GetComponent<PlayerManager>();
+        active = false;
+        isDefending = false;
+        totalWaitBetweenDefenseTime = defenseCooldown.RuntimeValue + defenseDuration.RuntimeValue;
         healthBar.color = Color.green;
     }
 
@@ -26,32 +35,49 @@ public class Defender : MonoBehaviour
     void Update()
     {
         if (!active) return;
-        //DefenseLoop(); //DEACTVATED
+        DefenseLoop(); //DEACTVATED
     }
 
     private void DefenseLoop()
     {
-        if (Time.time < lastDefenseTime + damageCooldown.RuntimeValue + (1 / damageCooldown.RuntimeValue)) return;
+        if ((Time.time < lastDefenseTime + totalWaitBetweenDefenseTime)) return;
 
         Defend();
     }
 
     private void Defend()
     {
+        // change player damage reduction
+        StartCoroutine(DefenseCoroutine());
+        //StopCoroutine(DefenseCoroutine());  
+    }
+
+    IEnumerator DefenseCoroutine()
+    {
+        Debug.Log("Started defending");
+        // define new lastdefense time
+        lastDefenseTime = Time.time;
+        totalWaitBetweenDefenseTime = defenseCooldown.RuntimeValue + defenseDuration.RuntimeValue;
+
+        isDefending = true;
+
+        // make healthbar grey
         ChangeHealthBarColor(Color.grey);
 
-        float finishDefendingTime = Time.time + damageCooldown.RuntimeValue;
-
-        // change player damage reduction
-        while (Time.time < finishDefendingTime)
-        {
-            
-        }
-
-        // change player damage reduction to 1
+        // activates damage reduction
+        playerManager.ActivateDamageReduction();
+        yield return new WaitForSeconds(defenseDuration.RuntimeValue);
+        playerManager.DeactivateDamageReduction();
 
         // color of healthbar to green
+        ChangeHealthBarColor(Color.green);
+        
+
+        isDefending = false;
+
+        Debug.Log("Stopped defending.");
     }
+
     public void SetActive(bool b)
     {
         active = b;

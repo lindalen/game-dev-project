@@ -15,19 +15,23 @@ public class StageManager : MonoBehaviour
         gameLoopManager = GetComponent<GameLoopManager>();
     }
 
+    private void Start()
+    {
+        PrepareStageCombat();
+    }
     public void GoToNextStage()
     {
         currentStage.RuntimeValue++;
-        gameLoopManager.ResetCombat();
-        enemyStrengthManager.UpdateEnemyStrength();
+        PrepareStageCombat();
+
+
     }
 
     public void GoToPreviousStage()
     {
         if (currentStage.RuntimeValue <=1) return;
         currentStage.RuntimeValue--;
-        enemyStrengthManager.UpdateEnemyStrength();
-        gameLoopManager.ResetCombat();
+        PrepareStageCombat();
 
     }
     private void EnsurePositiveStage()
@@ -38,5 +42,11 @@ public class StageManager : MonoBehaviour
     public int GetCurrentStageNumber()
     {
         return currentStage.RuntimeValue;
+    }
+
+    private void PrepareStageCombat()
+    {
+        enemyStrengthManager.UpdateEnemyStrength();
+        gameLoopManager.ResetCombat();
     }
 }
