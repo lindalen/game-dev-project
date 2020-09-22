@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class AttributeUpgrader : MonoBehaviour
 {
-    [SerializeField] FloatVariable attributeValue;
-    [SerializeField] FloatVariable attributeFrequency;
+    [SerializeField] FloatVariable mainAttribute;
+    [SerializeField] FloatVariable attributeCharacteristic;
     [SerializeField] FloatVariable playerGold;
+    [SerializeField] FloatVariable baseCost;
 
-    [SerializeField] float baseCost;
     [SerializeField] float costIncreaseMultiplier;
     [SerializeField] float upgradeValueMultiplier;
     [SerializeField] float upgradeFreqMultiplier;
 
     private int timesUpgraded;
 
-    private DisplayAttributeStats displayer;
+    private CustomAttributeDisplayer mainDisplayer;
+    private CustomAttributeDisplayer sideDisplayer;
 
     void Awake()
     {
-        displayer = GetComponent<DisplayAttributeStats>();
         timesUpgraded = 0;
         UpgradeAttributeFromTimesUpgraded();
-        displayer.UpdateText(baseCost, attributeValue.RuntimeValue, attributeFrequency.RuntimeValue);
     }
 
     
@@ -30,15 +29,15 @@ public class AttributeUpgrader : MonoBehaviour
     {
         for (int i=0; i<timesUpgraded; i++)
         {
-            attributeValue.RuntimeValue *= upgradeValueMultiplier;
-            attributeFrequency.RuntimeValue *= upgradeFreqMultiplier;
-            baseCost *= costIncreaseMultiplier;
+            mainAttribute.RuntimeValue *= upgradeValueMultiplier;
+            attributeCharacteristic.RuntimeValue *= upgradeFreqMultiplier;
+            baseCost.RuntimeValue *= costIncreaseMultiplier;
         }
     }
 
     public void UpgradeAttribute()
     {
-        if (playerGold.RuntimeValue >= baseCost)
+        if (playerGold.RuntimeValue >= baseCost.RuntimeValue)
         {
             Upgrade();
         }
@@ -46,12 +45,12 @@ public class AttributeUpgrader : MonoBehaviour
 
     private void Upgrade()
     {
-        playerGold.RuntimeValue -= baseCost;
-        attributeValue.RuntimeValue *= upgradeValueMultiplier;
-        attributeFrequency.RuntimeValue *= upgradeFreqMultiplier;
-        baseCost *= costIncreaseMultiplier;
+        playerGold.RuntimeValue -= baseCost.RuntimeValue;
+        mainAttribute.RuntimeValue *= upgradeValueMultiplier;
+        attributeCharacteristic.RuntimeValue *= upgradeFreqMultiplier;
+        baseCost.RuntimeValue *= costIncreaseMultiplier;
         timesUpgraded++;
-        displayer.UpdateText(baseCost, attributeValue.RuntimeValue, attributeFrequency.RuntimeValue);
     }
+
 
 }

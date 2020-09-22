@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2047474021945289428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2047474021945289426}
+  - component: {fileID: 2047474021945289427}
+  - component: {fileID: 2047474021945289425}
+  - component: {fileID: 2047474021945289424}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2047474021945289426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047474021945289428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5958021, y: -0.73388135, z: -1103.5514}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2047474021945289427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047474021945289428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8342f49958e4fcf4a8b601ba94b1ec45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGO: {fileID: 0}
+  enemyGO: {fileID: 0}
+--- !u!114 &2047474021945289425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047474021945289428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9784723ec1ad1174bb06d324a790318a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentStage: {fileID: 11400000, guid: 1c9cebe31db288c44afbc4dd8dd23359, type: 2}
+--- !u!114 &2047474021945289424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047474021945289428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d29db9d52129f4f919da5fa3dfc0c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyGO: {fileID: 0}
+  dmgIncreaseByStageMultiplier: 1.2
+  atkSpeedIncreaseByStageMultiplier: 1.05
+  healthIncreaseByStageMulitplier: 1.25
+  goldRewardIncreaseByStageMultiplier: 1.5
+  expRewardIncreaseByStageMultiplier: 1.4
+  BASE_enemyHP: {fileID: 11400000, guid: 3bd5b1a395151e045b93bebd20e8df08, type: 2}
+  BASE_enemyDMG: {fileID: 11400000, guid: 912d470324f0f08419baaa036bfd7113, type: 2}
+  BASE_enemyAttackFreq: {fileID: 11400000, guid: ca19754f4b602ea4ab3027a9d000a372,
+    type: 2}
+  BASE_enemyGoldReward: {fileID: 11400000, guid: fc2a7970bd610df4cb412cc075420af4,
+    type: 2}
+  BASE_enemyExpReward: {fileID: 11400000, guid: d7c30b8ab15f48a42b8c4757eb31eea5,
+    type: 2}
