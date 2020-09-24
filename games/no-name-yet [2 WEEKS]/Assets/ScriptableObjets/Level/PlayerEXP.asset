@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eca850db16068b41b8f8b3799c8c891, type: 3}
   m_Name: PlayerEXP
   m_EditorClassIdentifier: 
-  InitialValue: 0
+  InitialValue: 30000

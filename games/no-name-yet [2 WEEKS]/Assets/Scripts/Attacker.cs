@@ -8,11 +8,16 @@ public class Attacker : MonoBehaviour
     [SerializeField] FloatVariable attackFreq;
     [SerializeField] FloatVariable targetHealth;
 
+    private SingleAnimationController animController;
+    private Animator animator;
+
     float lastAttackTime;
     private bool active = false;
 
     void Awake()
     {
+        animController = GetComponent<SingleAnimationController>();
+        animator = GetComponent<Animator>();
         lastAttackTime = Time.time;
     }
 
@@ -32,6 +37,7 @@ public class Attacker : MonoBehaviour
     private void Attack()
     {
         targetHealth.RuntimeValue -= attackDMG.RuntimeValue;
+        animator.SetTrigger("Attack");
         lastAttackTime = Time.time;
     }
 

@@ -11,6 +11,8 @@ public class ExpBarManager : MonoBehaviour
     [SerializeField] FloatVariable playerExp;
 
     BigNumberFormatter formatter;
+    ScaleHPByLevel scaler;
+
     [SerializeField] Text expText;
     [SerializeField] Text levelText;
 
@@ -19,6 +21,7 @@ public class ExpBarManager : MonoBehaviour
 
     void Awake()
     {
+        scaler = GetComponent<ScaleHPByLevel>();
         formatter = GetComponent<BigNumberFormatter>();
         if (playerExp.RuntimeValue<baseLevelExp.RuntimeValue)
         {
@@ -82,6 +85,7 @@ public class ExpBarManager : MonoBehaviour
         lastLevelExp = nextLevelExp;
         nextLevelExp *= levelMultiplier.RuntimeValue;
         playerLevel.RuntimeValue += 1;
+        scaler.Scale();
         UpdateLevelText();
     }
 
