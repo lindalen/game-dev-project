@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyGO: {fileID: 0}
   dmgIncreaseByStageMultiplier: 1.2
-  atkSpeedIncreaseByStageMultiplier: 1.05
+  atkSpeedIncreaseByStageMultiplier: 1.07
   healthIncreaseByStageMulitplier: 1.25
   goldRewardIncreaseByStageMultiplier: 1.5
   expRewardIncreaseByStageMultiplier: 1.4

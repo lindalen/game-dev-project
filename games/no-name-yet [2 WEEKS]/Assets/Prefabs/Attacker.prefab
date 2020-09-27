@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7871626562521454696}
   - component: {fileID: 7871626562521454699}
   - component: {fileID: 7871626562521454697}
+  - component: {fileID: 2111684948}
+  - component: {fileID: 2111684949}
   m_Layer: 0
   m_Name: Attacker
   m_TagString: Untagged
@@ -25,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7871626562521454698}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.48, y: -0.93, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 59f73f860b48b87478c062d078538457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b17362b6f1a772f43aad71432ab2a56e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,3 +99,35 @@ MonoBehaviour:
   attackDMG: {fileID: 11400000, guid: 3941c5f2d6107204f90fb692192c6ff8, type: 2}
   attackFreq: {fileID: 11400000, guid: 5142ebbfe6084fb449578aac2aff8fcd, type: 2}
   targetHealth: {fileID: 11400000, guid: 073a31306b946df47bf20978938ce11d, type: 2}
+--- !u!95 &2111684948
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871626562521454698}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81adab3eec866d94db26a01a7987578a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2111684949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7871626562521454698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3640103c067853140a573779ee0d28cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationToPlay: {fileID: 0}

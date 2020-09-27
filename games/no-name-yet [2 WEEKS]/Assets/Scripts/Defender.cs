@@ -20,22 +20,24 @@ public class Defender : MonoBehaviour
     private bool isDefending;
 
     private PlayerManager playerManager;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Awake()
     {
         playerManager = playerManagerGO.GetComponent<PlayerManager>();
+        animator = GetComponent<Animator>();
         active = false;
         isDefending = false;
         totalWaitBetweenDefenseTime = defenseCooldown.RuntimeValue + defenseDuration.RuntimeValue;
         healthBar.color = Color.green;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (!active) return;
-        DefenseLoop(); //DEACTVATED
+        DefenseLoop(); 
     }
 
     private void DefenseLoop()
@@ -43,6 +45,7 @@ public class Defender : MonoBehaviour
         if ((Time.time < lastDefenseTime + totalWaitBetweenDefenseTime)) return;
 
         Defend();
+        
     }
 
     private void Defend()
@@ -60,7 +63,7 @@ public class Defender : MonoBehaviour
         totalWaitBetweenDefenseTime = defenseCooldown.RuntimeValue + defenseDuration.RuntimeValue;
 
         isDefending = true;
-
+        animator.SetBool("IsDefending", isDefending);
         // make healthbar grey
         ChangeHealthBarColor(Color.grey);
 
@@ -74,7 +77,7 @@ public class Defender : MonoBehaviour
         
 
         isDefending = false;
-
+        animator.SetBool("IsDefending", isDefending);
         Debug.Log("Stopped defending.");
     }
 

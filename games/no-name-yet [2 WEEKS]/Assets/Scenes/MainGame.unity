@@ -1549,7 +1549,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.26415092, g: 0.24047701, b: 0.24047701, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3377,8 +3377,8 @@ MonoBehaviour:
   playerGold: {fileID: 11400000, guid: df573b708648a7a46abf83526dd4a6b8, type: 2}
   baseCost: {fileID: 11400000, guid: 627b42f5aee4dea4fb9995481ad1758c, type: 2}
   costIncreaseMultiplier: 1.25
-  upgradeValueMultiplier: 1.17
-  upgradeFreqMultiplier: 1.1
+  upgradeValueMultiplier: 1.25
+  upgradeFreqMultiplier: 1.12
 --- !u!114 &1514801284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3747,9 +3747,9 @@ MonoBehaviour:
     type: 2}
   playerGold: {fileID: 11400000, guid: df573b708648a7a46abf83526dd4a6b8, type: 2}
   baseCost: {fileID: 11400000, guid: 079696712d9a47f4aa618969e965d1cd, type: 2}
-  costIncreaseMultiplier: 1.25
-  upgradeValueMultiplier: 1.33
-  upgradeFreqMultiplier: 1.1
+  costIncreaseMultiplier: 1.3
+  upgradeValueMultiplier: 1.25
+  upgradeFreqMultiplier: 1.07
 --- !u!114 &1586542852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3978,7 +3978,7 @@ MonoBehaviour:
   playerGold: {fileID: 11400000, guid: df573b708648a7a46abf83526dd4a6b8, type: 2}
   baseCost: {fileID: 11400000, guid: d0c5bb444364dca4eac6a8b90d5d0a3d, type: 2}
   costIncreaseMultiplier: 1.35
-  upgradeValueMultiplier: 1.15
+  upgradeValueMultiplier: 1.05
   upgradeFreqMultiplier: 1.2
 --- !u!114 &1649185085
 MonoBehaviour:
@@ -5048,38 +5048,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7871626563371079994}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2111684948
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111684944}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 81adab3eec866d94db26a01a7987578a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2111684949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111684944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3640103c067853140a573779ee0d28cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationToPlay: {fileID: 0}
 --- !u!1001 &2047474020913905631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5092,11 +5060,6 @@ PrefabInstance:
       propertyPath: enemyGO
       value: 
       objectReference: {fileID: 273822005}
-    - target: {fileID: 2047474021945289424, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
-        type: 3}
-      propertyPath: dmgIncreaseByStageMultiplier
-      value: 1.2
-      objectReference: {fileID: 0}
     - target: {fileID: 2047474021945289426, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5268,12 +5231,12 @@ PrefabInstance:
     - target: {fileID: 2744369528229294958, guid: 5f9197c097a703a4ab7f4a501f561d96,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.54
+      value: 4.72
       objectReference: {fileID: 0}
     - target: {fileID: 2744369528229294958, guid: 5f9197c097a703a4ab7f4a501f561d96,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 2744369528229294958, guid: 5f9197c097a703a4ab7f4a501f561d96,
         type: 3}
@@ -5468,27 +5431,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7871626562521454696, guid: ecfee423f7f814d4d8b1dc0d9d566099,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7871626562521454696, guid: ecfee423f7f814d4d8b1dc0d9d566099,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7871626562521454698, guid: ecfee423f7f814d4d8b1dc0d9d566099,
         type: 3}
       propertyPath: m_Name
       value: Attacker
       objectReference: {fileID: 0}
-    - target: {fileID: 7871626562521454699, guid: ecfee423f7f814d4d8b1dc0d9d566099,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: b17362b6f1a772f43aad71432ab2a56e,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfee423f7f814d4d8b1dc0d9d566099, type: 3}
 --- !u!1001 &8864455605674792595

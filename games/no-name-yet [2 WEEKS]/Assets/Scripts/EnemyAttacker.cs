@@ -12,10 +12,12 @@ public class EnemyAttacker : MonoBehaviour
     private bool active;
     private float lastAttackTime;
     private PlayerManager playerManager;
+    private Animator animator;
 
     private void Awake()
     {
         playerManager = targetGO.GetComponent<PlayerManager>();
+        animator = GetComponent<Animator>();
         active = false;
         lastAttackTime = Time.time;
     }
@@ -30,8 +32,10 @@ public class EnemyAttacker : MonoBehaviour
     {
         if (Time.time < lastAttackTime + (1 / enemyAttackFreq.RuntimeValue)) return;
         float totalAttackDamage = enemyDMG.RuntimeValue * playerManager.GetCurrentDamageReduction();
+        animator.SetTrigger("Attack");
         targetHealth.RuntimeValue -= totalAttackDamage;
-        Debug.Log("Attaking with DMG: " + enemyDMG.RuntimeValue + ", DMGRED: " + playerManager.GetCurrentDamageReduction() + ", ACTDMG: " + totalAttackDamage);
+        
+        //Debug.Log("Attaking with DMG: " + enemyDMG.RuntimeValue + ", DMGRED: " + playerManager.GetCurrentDamageReduction() + ", ACTDMG: " + totalAttackDamage);
         lastAttackTime = Time.time;
     }
     public void SetActive(bool b)

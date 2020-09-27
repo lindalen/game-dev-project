@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2744369528229294959}
   - component: {fileID: 2744369528229294944}
   - component: {fileID: 2744369528229294945}
+  - component: {fileID: 273822010}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2744369528229294956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.33, y: -0.93, z: -1103.2771}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 49c5d646e85552a4b985d6e5ac6ecee4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,3 +117,22 @@ MonoBehaviour:
   enemyAttackFreq: {fileID: 11400000, guid: e41ff5cda2423b24e91aa72a552a75f9, type: 2}
   targetHealth: {fileID: 11400000, guid: 23790ee85e5926a48b3e212949b1b6be, type: 2}
   targetGO: {fileID: 0}
+--- !u!95 &273822010
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744369528229294956}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5f8d4c3c4112e5438f8a17916050099, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

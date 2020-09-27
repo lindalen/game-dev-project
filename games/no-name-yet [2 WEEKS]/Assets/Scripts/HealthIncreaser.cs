@@ -9,6 +9,7 @@ public class HealthIncreaser : MonoBehaviour
     [SerializeField] FloatVariable healFreq;
     [SerializeField] FloatVariable healAmount;
 
+    private Animator animator;
 
     private float lastHealTime;
 
@@ -17,6 +18,7 @@ public class HealthIncreaser : MonoBehaviour
     private void Awake()
     {
         lastHealTime = 0;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class HealthIncreaser : MonoBehaviour
     private void Heal()
     {
         float _healAmount = healAmount.RuntimeValue;
+        animator.SetTrigger("HealTrigger");
         if (health.RuntimeValue+_healAmount > maxHealth.RuntimeValue) //overheal check
         {
             health.RuntimeValue = maxHealth.RuntimeValue;
