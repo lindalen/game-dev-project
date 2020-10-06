@@ -16,6 +16,6 @@ public class CustomAttributeDisplayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        displayText.text = labelText + attribute.RuntimeValue;
+        displayText.text = labelText + attribute.RuntimeValue.ToString("F2");
     }
 }

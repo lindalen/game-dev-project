@@ -73,11 +73,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyGO: {fileID: 0}
-  dmgIncreaseByStageMultiplier: 1.2
+  dmgIncreaseByStageMultiplier: 1.4
   atkSpeedIncreaseByStageMultiplier: 1.07
   healthIncreaseByStageMulitplier: 1.25
-  goldRewardIncreaseByStageMultiplier: 1.5
-  expRewardIncreaseByStageMultiplier: 1.4
+  goldRewardIncreaseByStageMultiplier: 1.4
+  expRewardIncreaseByStageMultiplier: 1.5
   BASE_enemyHP: {fileID: 11400000, guid: 3bd5b1a395151e045b93bebd20e8df08, type: 2}
   BASE_enemyDMG: {fileID: 11400000, guid: 912d470324f0f08419baaa036bfd7113, type: 2}
   BASE_enemyAttackFreq: {fileID: 11400000, guid: ca19754f4b602ea4ab3027a9d000a372,

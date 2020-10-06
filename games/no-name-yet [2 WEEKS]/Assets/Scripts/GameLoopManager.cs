@@ -52,7 +52,9 @@ public class GameLoopManager : MonoBehaviour
 
     private void RewardPlayerOnEnemyKill()
     {
-        playerManager.AddGold(enemyManager.GetReward());
+        float reward = enemyManager.GetReward();
+        GameObject.Find("UITextAnimationManager").GetComponent<GoldGainTextAnimator>().OnGoldGain(reward);
+        playerManager.AddGold(reward);
         playerManager.AddExp(enemyManager.GetExp());
     }
 }
