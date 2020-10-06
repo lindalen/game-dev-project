@@ -5534,6 +5534,21 @@ PrefabInstance:
       propertyPath: enemyGO
       value: 
       objectReference: {fileID: 273822005}
+    - target: {fileID: 2047474021945289424, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
+        type: 3}
+      propertyPath: healthIncreaseByStageMulitplier
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047474021945289424, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
+        type: 3}
+      propertyPath: goldRewardIncreaseByStageMultiplier
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047474021945289424, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
+        type: 3}
+      propertyPath: expRewardIncreaseByStageMultiplier
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 2047474021945289426, guid: ba526ceda71dc2946bb1f6ae5f9c0f63,
         type: 3}
       propertyPath: m_LocalPosition.x
