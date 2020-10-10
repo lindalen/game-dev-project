@@ -31,3 +31,6 @@ Rules [Applied after game 5]:
 
 ### Game 5: Team VS Wizard - Idle [Time: 14 days]
 ![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-5.PNG "Game 5 Image")
+
+### Game 6: Beans! Beans! Beans! [Time: 1 hour]
+![Alt text](https://github.com/lindalen/game-dev-project/blob/master/screenshots/game-6.PNG "Game 6 Image")
