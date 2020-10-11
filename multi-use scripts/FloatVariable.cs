@@ -18,4 +18,24 @@ public class FloatVariable : ScriptableObject, ISerializationCallbackReceiver
     }
 
     public void OnBeforeSerialize() { }
+
+    public void SetValue(float value)
+    {
+        RuntimeValue = value;
+    }
+
+    public void SetValue(FloatVariable value)
+    {
+        RuntimeValue = value.RuntimeValue;
+    }
+
+    public void ApplyChange(float amount)
+    {
+        RuntimeValue += amount;
+    }
+
+    public void ApplyChange(FloatVariable amount)
+    {
+        RuntimeValue += amount.RuntimeValue;
+    }
 }
