@@ -2,6 +2,9 @@
 This repertoire documents my attempt at the challenge described in this video: 
 https://www.youtube.com/watch?v=5-iST0a69cI.
 
+UPDATE 2021:
+I decided to abandon this project after 6 games, simply due to a change in focus.
+
 Why do this?
 - To strengthen my C# programming
 - To get practical experience with design patterns
